@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bk3vhcmrjed2k"]
+
+[ext_resource type="Texture2D" uid="uid://4mve6r5yk2ih" path="res://Assets/palm_tree_pixel.png" id="1_oi52y"]
+[ext_resource type="ArrayMesh" uid="uid://dfcbt505kda74" path="res://Assets/palmtree.obj" id="2_on0u6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3k160"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_oi52y")
+metallic_specular = 0.0
+texture_filter = 0
+distance_fade_max_distance = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ff6d3"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Palmtree" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_3k160")
+mesh = ExtResource("2_on0u6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Palmtree"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Palmtree/StaticBody3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.1, 0)
+shape = SubResource("CapsuleShape3D_ff6d3")

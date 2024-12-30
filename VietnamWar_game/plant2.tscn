@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bheyabw1eycjo"]
+
+[ext_resource type="Texture2D" uid="uid://yexsmt4flmsv" path="res://Assets/plant2pixel.png" id="1_04kyn"]
+[ext_resource type="ArrayMesh" uid="uid://r0pxva8tirk7" path="res://Assets/plant2.obj" id="2_samx1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qw0b"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_04kyn")
+metallic_specular = 0.0
+texture_filter = 0
+distance_fade_max_distance = 0.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Plant2" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_2qw0b")
+mesh = ExtResource("2_samx1")

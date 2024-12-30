@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://lkn02y28tams"]
+
+[ext_resource type="Texture2D" uid="uid://cca1i1g68sg5p" path="res://Assets/jungle-trees.png" id="1_8qk12"]
+[ext_resource type="ArrayMesh" uid="uid://dbpdsp30rwhm3" path="res://Assets/untitled.obj" id="2_htb8w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xht7p"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 2
+albedo_texture = ExtResource("1_8qk12")
+metallic_specular = 0.0
+texture_filter = 0
+distance_fade_max_distance = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wm10q"]
+
+[node name="jungletree" type="Node3D"]
+
+[node name="Untitled" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_xht7p")
+mesh = ExtResource("2_htb8w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Untitled"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Untitled/StaticBody3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.213924, 0)
+shape = SubResource("CapsuleShape3D_wm10q")

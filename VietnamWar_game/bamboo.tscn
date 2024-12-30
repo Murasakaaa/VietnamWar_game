@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6mqo3wgjw3n6"]
+
+[ext_resource type="Texture2D" uid="uid://cxxpwajm2uvh" path="res://Assets/bamboopixel.png" id="1_16cft"]
+[ext_resource type="ArrayMesh" uid="uid://b4rn3ryta6r3q" path="res://Assets/bamboo.obj" id="2_7wn83"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ky0iq"]
+albedo_texture = ExtResource("1_16cft")
+metallic_specular = 0.0
+texture_filter = 2
+distance_fade_mode = 1
+distance_fade_max_distance = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yhl5d"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Bamboo" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ky0iq")
+mesh = ExtResource("2_7wn83")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Bamboo"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bamboo/StaticBody3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.3, 0)
+shape = SubResource("CapsuleShape3D_yhl5d")

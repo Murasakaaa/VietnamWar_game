@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl1w655el0mjl"]
+
+[ext_resource type="PackedScene" uid="uid://dvbldlv548ff6" path="res://plant.tscn" id="1_fuma1"]
+[ext_resource type="PackedScene" uid="uid://bheyabw1eycjo" path="res://plant2.tscn" id="2_uexg1"]
+[ext_resource type="PackedScene" uid="uid://bbldv837nsrvk" path="res://3plant.tscn" id="3_fbk65"]
+[ext_resource type="PackedScene" uid="uid://biap5o7fi4g3k" path="res://bush.tscn" id="4_lwu5y"]
+
+[node name="group_of_plants" type="Node3D"]
+
+[node name="1plant" parent="." instance=ExtResource("1_fuma1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00159836, 0, 0.110852)
+
+[node name="1plant2" parent="." instance=ExtResource("1_fuma1")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.458684, 0, -0.680961)
+
+[node name="2plant" parent="." instance=ExtResource("2_uexg1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00159836, 0, -1.0987)
+
+[node name="3plant" parent="." instance=ExtResource("3_fbk65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00159836, 0, 0.690832)
+
+[node name="Bush" parent="." instance=ExtResource("4_lwu5y")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00159836, 0, -0.327958)
+
+[node name="Bush2" parent="." instance=ExtResource("4_lwu5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00159836, 0, 0.529732)
+
+[node name="Bush3" parent="." instance=ExtResource("4_lwu5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732317, -2.38419e-07, -0.276768)

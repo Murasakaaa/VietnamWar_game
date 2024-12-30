@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbldv837nsrvk"]
+
+[ext_resource type="Texture2D" uid="uid://dvum75g20tkcv" path="res://Assets/plant3pixel.png" id="1_o4rfe"]
+[ext_resource type="ArrayMesh" uid="uid://dijmid7muqtvc" path="res://Assets/3plant.obj" id="2_6mbvg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_px18c"]
+albedo_texture = ExtResource("1_o4rfe")
+metallic_specular = 0.0
+texture_filter = 2
+distance_fade_mode = 1
+distance_fade_max_distance = 0.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="3Plant" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_px18c")
+mesh = ExtResource("2_6mbvg")

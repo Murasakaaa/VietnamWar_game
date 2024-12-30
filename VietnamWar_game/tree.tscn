@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyu75smr6fw5i"]
+
+[ext_resource type="Texture2D" uid="uid://dnsx8d1g5a2nc" path="res://Assets/tree1pixel.png" id="1_c6i5q"]
+[ext_resource type="ArrayMesh" uid="uid://dvw6vdedbya75" path="res://Assets/tree.obj" id="2_ubdam"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n50xo"]
+albedo_texture = ExtResource("1_c6i5q")
+metallic_specular = 0.0
+texture_filter = 2
+distance_fade_mode = 1
+distance_fade_max_distance = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_01b4b"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Tree" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_n50xo")
+mesh = ExtResource("2_ubdam")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tree"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/StaticBody3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.103161, 0)
+shape = SubResource("CapsuleShape3D_01b4b")

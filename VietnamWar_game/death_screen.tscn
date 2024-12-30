@@ -1,0 +1,119 @@
+[gd_scene load_steps=12 format=3 uid="uid://bv1pjiiy1q80b"]
+
+[ext_resource type="Script" path="res://death_screen.gd" id="1_p7e42"]
+[ext_resource type="FontFile" uid="uid://b20fr1lupmqsg" path="res://Hatch.ttf" id="2_qdnw1"]
+[ext_resource type="Texture2D" uid="uid://bp045urfycndm" path="res://Assets/Death/mesh.png" id="2_vpc6g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xt7a"]
+atlas = ExtResource("2_vpc6g")
+region = Rect2(149, 0, 149, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_typ1t"]
+atlas = ExtResource("2_vpc6g")
+region = Rect2(298, 0, 149, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvcga"]
+atlas = ExtResource("2_vpc6g")
+region = Rect2(0, 0, 140, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqmut"]
+atlas = ExtResource("2_vpc6g")
+region = Rect2(441, 0, 147, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw0hy"]
+atlas = ExtResource("2_vpc6g")
+region = Rect2(580, 0, 145, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6vh7"]
+atlas = ExtResource("2_vpc6g")
+region = Rect2(725, 0, 145, 101)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02qw0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xt7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_typ1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvcga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqmut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw0hy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6vh7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tid71"]
+font = ExtResource("2_qdnw1")
+font_color = Color(1, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Death" type="Control"]
+layout_mode = 3
+anchor_left = 0.358
+anchor_top = 0.333
+anchor_right = 0.671
+anchor_bottom = 0.867
+offset_left = -0.416016
+offset_top = 0.216019
+offset_right = -295.992
+offset_bottom = -241.816
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.55955, 3.32275)
+script = ExtResource("1_p7e42")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(38.5823, 90.2866)
+scale = Vector2(1.73792, 3.05945)
+sprite_frames = SubResource("SpriteFrames_02qw0")
+autoplay = "default"
+frame = 5
+frame_progress = 0.355931
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -0.899353
+offset_top = 24.6783
+offset_right = 59.1006
+offset_bottom = 103.678
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Retry" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "RETRY"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "QUIT"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.318
+anchor_top = -0.541
+anchor_right = 1.274
+anchor_bottom = -0.15
+offset_left = 0.524487
+offset_top = 39.4105
+offset_right = 2.04448
+offset_bottom = 21.7465
+scale = Vector2(0.985768, 1.77042)
+text = "YOU'RE DED"
+label_settings = SubResource("LabelSettings_tid71")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Retry" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

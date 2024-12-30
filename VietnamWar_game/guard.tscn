@@ -1,0 +1,142 @@
+[gd_scene load_steps=18 format=3 uid="uid://b65fgjnd5tl8p"]
+
+[ext_resource type="Script" path="res://guard.gd" id="1_6ttyc"]
+[ext_resource type="Texture2D" uid="uid://dc6t0dbp6gdx1" path="res://Assets/guard.png" id="1_w6c50"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73cxa"]
+atlas = ExtResource("1_w6c50")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjo5p"]
+atlas = ExtResource("1_w6c50")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oawx7"]
+atlas = ExtResource("1_w6c50")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seqxu"]
+atlas = ExtResource("1_w6c50")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbboe"]
+atlas = ExtResource("1_w6c50")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38kho"]
+atlas = ExtResource("1_w6c50")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx3rj"]
+atlas = ExtResource("1_w6c50")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_432ls"]
+atlas = ExtResource("1_w6c50")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfw5v"]
+atlas = ExtResource("1_w6c50")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5r7u"]
+atlas = ExtResource("1_w6c50")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmwuj"]
+atlas = ExtResource("1_w6c50")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehbno"]
+atlas = ExtResource("1_w6c50")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_83or2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73cxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjo5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oawx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seqxu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbboe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38kho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx3rj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_432ls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfw5v")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5r7u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmwuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehbno")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_03drl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j7buf"]
+
+[node name="guard" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_6ttyc")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1.2685, 0)
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_83or2")
+autoplay = "default"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_03drl")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00320435, 1.12555, 0.00682449)
+target_position = Vector3(0, 0, 20)
+
+[node name="DetectionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("SphereShape3D_j7buf")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_area_3d_body_entered"]
